@@ -1,20 +1,19 @@
 package main
 
 import (
-	"whyteoni/gatr/internal/config"
-	"whyteoni/gatr/internal/database"
+	"github.com/whyteoni/gatr/internal/config"
+	"github.com/whyteoni/gatr/internal/database"
 )
 
-
 type state struct {
-	db	*database.Queries
-	cfg	*config.Config
+	db  *database.Queries
+	cfg *config.Config
 }
 
 type CliCommand struct {
-	Name    string
-	Desc	string
-	Callback    func(state, []string) error
+	Name     string
+	Desc     string
+	Callback func(state, []string) error
 }
 
 type RSSFeed struct {

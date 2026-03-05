@@ -12,7 +12,7 @@ func CommandLogin(state state, args []string) (err error) {
 	}
 
 	userName := args[0]
-	_, err = state.db.GetUser(context.Background(), userName)
+	user, err := state.db.GetUser(context.Background(), userName)
 
 	if err != nil {
 		if strings.Contains(err.Error(), "no rows in result set") {
@@ -21,7 +21,7 @@ func CommandLogin(state state, args []string) (err error) {
 		return
 	}
 
-	state.cfg.SetUser(userName)
+	state.cfg.SetUser(user.Name, user.ID)
 	fmt.Printf("Gatr got you, %s.\n", userName)
 	return
 }

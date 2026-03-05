@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"whyteoni/gatr/internal/database"
+	"github.com/whyteoni/gatr/internal/database"
 
 	"github.com/google/uuid"
 )
@@ -22,10 +22,14 @@ func CommandRegister(state state, args []string) error {
 	userParams.UpdatedAt = time.Now()
 
 	user, err := state.db.CreateUser(context.Background(), userParams)
-	if err != nil {	return err	}
+	if err != nil {
+		return err
+	}
 
 	fmt.Printf("Gatr registered %s (%s) at %s\n", user.Name, user.ID, user.CreatedAt)
-	if err = CommandLogin(state, []string{user.Name}); err != nil { return err }
+	if err = CommandLogin(state, []string{user.Name}); err != nil {
+		return err
+	}
 	return nil
 
 }

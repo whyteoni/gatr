@@ -4,8 +4,9 @@ import (
 	"database/sql"
 	"fmt"
 	"os"
-	"whyteoni/gatr/internal/config"
-	"whyteoni/gatr/internal/database"
+
+	"github.com/whyteoni/gatr/internal/config"
+	"github.com/whyteoni/gatr/internal/database"
 
 	_ "github.com/lib/pq"
 )
@@ -39,7 +40,9 @@ func main() {
 		os.Exit(1)
 	}
 	commandName := os.Args[1]
-	if len(os.Args) > 2 { args = os.Args[2:] }
+	if len(os.Args) > 2 {
+		args = os.Args[2:]
+	}
 
 	// Get the function
 	command, ok := Commands[commandName]

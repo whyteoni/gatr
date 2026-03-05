@@ -9,6 +9,7 @@ CREATE TABLE feed_follows (
     feed_id     uuid NOT NULL
                 REFERENCES feeds(id) 
                 ON DELETE CASCADE,
+    CONSTRAINT user_and_feed_uniq_combo
     UNIQUE (user_id, feed_id) 
 );
 
